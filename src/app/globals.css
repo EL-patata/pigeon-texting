@@ -2,26 +2,216 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@layer base {
+	:root {
+		--background: 0 0% 100%;
+		--foreground: 222.2 84% 4.9%;
+		--card: 0 0% 100%;
+		--card-foreground: 222.2 84% 4.9%;
+		--popover: 0 0% 100%;
+		--popover-foreground: 222.2 84% 4.9%;
+		--primary: 221.2 83.2% 53.3%;
+		--primary-foreground: 210 40% 98%;
+		--secondary: 210 40% 96.1%;
+		--secondary-foreground: 222.2 47.4% 11.2%;
+		--muted: 210 40% 96.1%;
+		--muted-foreground: 215.4 16.3% 46.9%;
+		--accent: 210 40% 96.1%;
+		--accent-foreground: 222.2 47.4% 11.2%;
+		--destructive: 0 84.2% 60.2%;
+		--destructive-foreground: 210 40% 98%;
+		--border: 214.3 31.8% 91.4%;
+		--input: 214.3 31.8% 91.4%;
+		--ring: 221.2 83.2% 53.3%;
+		--radius: 0.5rem;
+	}
+
+	.dark {
+		--background: 222.2 84% 4.9%;
+		--foreground: 210 40% 98%;
+		--card: 222.2 84% 4.9%;
+		--card-foreground: 210 40% 98%;
+		--popover: 222.2 84% 4.9%;
+		--popover-foreground: 210 40% 98%;
+		--primary: 217.2 91.2% 59.8%;
+		--primary-foreground: 222.2 47.4% 11.2%;
+		--secondary: 217.2 32.6% 17.5%;
+		--secondary-foreground: 210 40% 98%;
+		--muted: 217.2 32.6% 17.5%;
+		--muted-foreground: 215 20.2% 65.1%;
+		--accent: 217.2 32.6% 17.5%;
+		--accent-foreground: 210 40% 98%;
+		--destructive: 0 62.8% 30.6%;
+		--destructive-foreground: 210 40% 98%;
+		--border: 217.2 32.6% 17.5%;
+		--input: 217.2 32.6% 17.5%;
+		--ring: 224.3 76.3% 48%;
+	}
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+@layer base {
+	* {
+		@apply border-border;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer utilities {
+	.messages-container {
+		@apply relative bg-background basis-[80%]  overflow-y-auto flex flex-col gap-1 p-4;
+	}
+
+	.messages-outer-container {
+		--grad-color-1: #ff6968;
+		--grad-color-2: #a334fa;
+		--grad-color-3: #0695ff;
+	}
+
+	.messages-outer-container.red {
+		--grad-color-1: #1d4ed8;
+		--grad-color-2: #38bdf8;
+		--grad-color-3: #06b6d4;
+	}
+
+	.messages-outer-container.green {
+		--grad-color-1: #34d399;
+		--grad-color-2: #4ade80;
+		--grad-color-3: #84cc16;
+	}
+
+	.messages-outer-container.yellow {
+		--grad-color-1: #facc15;
+		--grad-color-2: #ea580c;
+		--grad-color-3: #ef4444;
+	}
+
+	.messages-outer-container.purple {
+		--grad-color-1: #4f46e5;
+		--grad-color-2: #7e22ce;
+		--grad-color-3: #c084fc;
+	}
+
+	.messages-button {
+		background-image: linear-gradient(
+			to top right,
+			var(--grad-color-1),
+			var(--grad-color-2),
+			var(--grad-color-3)
+		);
+	}
+
+	.message {
+		@apply relative max-w-[75%] lg:max-w-[50%] h-fit px-3 py-[18px] rounded;
+	}
+
+	.message.current-user {
+		background-image: linear-gradient(
+			to top,
+			var(--grad-color-1) 0%,
+			var(--grad-color-2) 50%,
+			var(--grad-color-3) 100%
+		);
+		@apply self-end bg-fixed text-white;
+	}
+
+	section::-webkit-scrollbar {
+		@apply w-2;
+	}
+
+	section::-webkit-scrollbar-thumb {
+		background-image: linear-gradient(
+			to top,
+			var(--grad-color-1) 0%,
+			var(--grad-color-2) 50%,
+			var(--grad-color-3) 100%
+		);
+		@apply rounded-full;
+	}
+	section::-webkit-scrollbar-track {
+		@apply bg-accent;
+	}
+
+	.message.current-user > p {
+		@apply relative z-30;
+	}
+
+	.message.other-user {
+		@apply self-start bg-accent z-10;
+	}
+}
+
+.cl-userButtonTrigger {
+	@apply w-16 h-16;
+}
+
+.cl-userButtonAvatarBox {
+	@apply w-full h-full;
+}
+
+.cl-card {
+	@apply bg-background rounded-none border-primary;
+}
+
+.cl-card p,
+.cl-card h1,
+.cl-card h2,
+.cl-card h3,
+.cl-card h4,
+.cl-card h5,
+.cl-card h6,
+.cl-card span,
+.cl-card button,
+.cl-card a,
+.cl-card div {
+	@apply text-foreground;
+}
+.cl-page p,
+.cl-page h1,
+.cl-page h2,
+.cl-page h3,
+.cl-page h4,
+.cl-page h5,
+.cl-page h6,
+.cl-page span,
+.cl-page button,
+.cl-page a,
+.cl-page div {
+	@apply text-foreground;
+}
+
+.cl-navbar {
+	@apply bg-background;
+}
+
+.cl-navbar p,
+.cl-navbar h1,
+.cl-navbar h2,
+.cl-navbar h3,
+.cl-navbar h4,
+.cl-navbar h5,
+.cl-navbar h6,
+.cl-navbar span,
+.cl-navbar button,
+.cl-navbar a,
+.cl-navbar div {
+	@apply text-foreground;
+}
+
+.cl-modalCloseButton {
+	@apply bg-primary  hover:bg-primary/90 opacity-100 rounded-full;
+}
+
+.cl-modalCloseButton svg {
+	@apply text-white;
+}
+
+.cl-userButtonPopoverCard {
+	@apply mt-auto;
+}
+
+.cl-internal-b3fm6y p,
+.cl-internal-b3fm6y a {
+	@apply text-white;
 }
