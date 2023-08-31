@@ -5,47 +5,47 @@
 @layer base {
 	:root {
 		--background: 0 0% 100%;
-		--foreground: 222.2 84% 4.9%;
+		--foreground: 224 71.4% 4.1%;
 		--card: 0 0% 100%;
-		--card-foreground: 222.2 84% 4.9%;
+		--card-foreground: 224 71.4% 4.1%;
 		--popover: 0 0% 100%;
-		--popover-foreground: 222.2 84% 4.9%;
-		--primary: 221.2 83.2% 53.3%;
-		--primary-foreground: 210 40% 98%;
-		--secondary: 210 40% 96.1%;
-		--secondary-foreground: 222.2 47.4% 11.2%;
-		--muted: 210 40% 96.1%;
-		--muted-foreground: 215.4 16.3% 46.9%;
-		--accent: 210 40% 96.1%;
-		--accent-foreground: 222.2 47.4% 11.2%;
+		--popover-foreground: 224 71.4% 4.1%;
+		--primary: 262.1 83.3% 57.8%;
+		--primary-foreground: 210 20% 98%;
+		--secondary: 220 14.3% 95.9%;
+		--secondary-foreground: 220.9 39.3% 11%;
+		--muted: 220 14.3% 95.9%;
+		--muted-foreground: 220 8.9% 46.1%;
+		--accent: 220 14.3% 95.9%;
+		--accent-foreground: 220.9 39.3% 11%;
 		--destructive: 0 84.2% 60.2%;
-		--destructive-foreground: 210 40% 98%;
-		--border: 214.3 31.8% 91.4%;
-		--input: 214.3 31.8% 91.4%;
-		--ring: 221.2 83.2% 53.3%;
+		--destructive-foreground: 210 20% 98%;
+		--border: 220 13% 91%;
+		--input: 220 13% 91%;
+		--ring: 262.1 83.3% 57.8%;
 		--radius: 0.5rem;
 	}
 
 	.dark {
-		--background: 222.2 84% 4.9%;
-		--foreground: 210 40% 98%;
-		--card: 222.2 84% 4.9%;
-		--card-foreground: 210 40% 98%;
-		--popover: 222.2 84% 4.9%;
-		--popover-foreground: 210 40% 98%;
-		--primary: 217.2 91.2% 59.8%;
-		--primary-foreground: 222.2 47.4% 11.2%;
-		--secondary: 217.2 32.6% 17.5%;
-		--secondary-foreground: 210 40% 98%;
-		--muted: 217.2 32.6% 17.5%;
-		--muted-foreground: 215 20.2% 65.1%;
-		--accent: 217.2 32.6% 17.5%;
-		--accent-foreground: 210 40% 98%;
+		--background: 224 71.4% 4.1%;
+		--foreground: 210 20% 98%;
+		--card: 224 71.4% 4.1%;
+		--card-foreground: 210 20% 98%;
+		--popover: 224 71.4% 4.1%;
+		--popover-foreground: 210 20% 98%;
+		--primary: 263.4 70% 50.4%;
+		--primary-foreground: 210 20% 98%;
+		--secondary: 215 27.9% 16.9%;
+		--secondary-foreground: 210 20% 98%;
+		--muted: 215 27.9% 16.9%;
+		--muted-foreground: 217.9 10.6% 64.9%;
+		--accent: 215 27.9% 16.9%;
+		--accent-foreground: 210 20% 98%;
 		--destructive: 0 62.8% 30.6%;
-		--destructive-foreground: 210 40% 98%;
-		--border: 217.2 32.6% 17.5%;
-		--input: 217.2 32.6% 17.5%;
-		--ring: 224.3 76.3% 48%;
+		--destructive-foreground: 210 20% 98%;
+		--border: 215 27.9% 16.9%;
+		--input: 215 27.9% 16.9%;
+		--ring: 263.4 70% 50.4%;
 	}
 }
 
@@ -59,51 +59,82 @@
 }
 
 @layer utilities {
-	.messages-container {
-		@apply relative bg-background basis-[80%]  overflow-y-auto flex flex-col gap-1 p-4;
+	.messages-outer-container {
+		@apply grid h-screen max-h-screen w-full lg:w-[calc(100vw-24rem)];
+
+		grid-template-rows: 10vh 80vh 10vh;
 	}
 
-	.messages-outer-container {
+	.dropdown-menu .base,
+	.messages-outer-container.base,
+	.messages-outer-container .base {
 		--grad-color-1: #ff6968;
 		--grad-color-2: #a334fa;
 		--grad-color-3: #0695ff;
 	}
 
-	.messages-outer-container.red {
+	.dropdown-menu .blue,
+	.messages-outer-container.blue,
+	.messages-outer-container .blue {
 		--grad-color-1: #1d4ed8;
 		--grad-color-2: #38bdf8;
 		--grad-color-3: #06b6d4;
 	}
 
-	.messages-outer-container.green {
+	.dropdown-menu .green,
+	.messages-outer-container.green,
+	.messages-outer-container .green {
 		--grad-color-1: #34d399;
 		--grad-color-2: #4ade80;
 		--grad-color-3: #84cc16;
 	}
 
-	.messages-outer-container.yellow {
-		--grad-color-1: #facc15;
+	.dropdown-menu .orange,
+	.messages-outer-container.orange,
+	.messages-outer-container .orange {
+		--grad-color-1: #dd3131;
 		--grad-color-2: #ea580c;
-		--grad-color-3: #ef4444;
+		--grad-color-3: #facc15;
 	}
 
-	.messages-outer-container.purple {
-		--grad-color-1: #4f46e5;
-		--grad-color-2: #7e22ce;
-		--grad-color-3: #c084fc;
+	.dropdown-menu .purple,
+	.messages-outer-container.purple,
+	.messages-outer-container .purple {
+		--grad-color-1: #c084fc;
+		--grad-color-2: #4f46e5;
+		--grad-color-3: #710acc;
+	}
+
+	.dropdown-menu .rose,
+	.messages-outer-container.rose,
+	.messages-outer-container .rose {
+		--grad-color-1: rgb(251, 113, 133);
+		--grad-color-2: rgb(253, 186, 116);
+		--grad-color-3: #f14273;
+	}
+
+	.dropdown-menu .silver,
+	.messages-outer-container.silver,
+	.messages-outer-container .silver {
+		--grad-color-1: rgb(122, 128, 143);
+		--grad-color-2: rgb(122, 124, 128);
+		--grad-color-3: rgb(17, 24, 39);
+	}
+
+	.messages-container {
+		@apply relative bg-background w-full max-w-[100vw] overflow-y-auto overflow-x-hidden flex flex-col gap-1 p-4;
 	}
 
 	.messages-button {
-		background-image: linear-gradient(
-			to top right,
-			var(--grad-color-1),
+		background-image: radial-gradient(
+			var(--grad-color-3),
 			var(--grad-color-2),
-			var(--grad-color-3)
+			var(--grad-color-1)
 		);
 	}
 
 	.message {
-		@apply relative max-w-[75%] lg:max-w-[50%] h-fit px-3 py-[18px] rounded;
+		@apply relative max-w-[75%] lg:max-w-[50%]  md:px-4 md:py-[18px] px-2 py-4 rounded;
 	}
 
 	.message.current-user {
@@ -113,21 +144,16 @@
 			var(--grad-color-2) 50%,
 			var(--grad-color-3) 100%
 		);
-		@apply self-end bg-fixed text-white;
+
+		@apply relative self-end bg-fixed text-white;
 	}
 
 	section::-webkit-scrollbar {
-		@apply w-2;
+		@apply w-[0.375rem];
 	}
 
 	section::-webkit-scrollbar-thumb {
-		background-image: linear-gradient(
-			to top,
-			var(--grad-color-1) 0%,
-			var(--grad-color-2) 50%,
-			var(--grad-color-3) 100%
-		);
-		@apply rounded-full;
+		@apply rounded-full bg-[var(--grad-color-2)];
 	}
 	section::-webkit-scrollbar-track {
 		@apply bg-accent;
@@ -140,6 +166,17 @@
 	.message.other-user {
 		@apply self-start bg-accent z-10;
 	}
+
+	form textarea::-webkit-scrollbar {
+		@apply w-1;
+	}
+
+	form textarea::-webkit-scrollbar-thumb {
+		@apply rounded-full bg-[var(--grad-color-2)];
+	}
+	form textarea::-webkit-scrollbar-track {
+		@apply bg-accent;
+	}
 }
 
 .cl-userButtonTrigger {
@@ -151,7 +188,7 @@
 }
 
 .cl-card {
-	@apply bg-background rounded-none border-primary;
+	@apply bg-background border-primary rounded-md;
 }
 
 .cl-card p,
@@ -164,9 +201,19 @@
 .cl-card span,
 .cl-card button,
 .cl-card a,
+.cl-card label,
 .cl-card div {
 	@apply text-foreground;
 }
+
+.cl-card button {
+	@apply bg-zinc-100 dark:bg-slate-800 hover:bg-zinc-100/50 hover:dark:bg-slate-800/50;
+}
+
+.cl-card input {
+	@apply bg-accent text-foreground;
+}
+
 .cl-page p,
 .cl-page h1,
 .cl-page h2,
@@ -182,7 +229,7 @@
 }
 
 .cl-navbar {
-	@apply bg-background;
+	@apply bg-background rounded-l-md;
 }
 
 .cl-navbar p,
