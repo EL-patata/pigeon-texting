@@ -4,8 +4,6 @@ import { ClerkProvider, currentUser } from '@clerk/nextjs';
 import { ThemeProvider } from '@/context/ThemeProvider';
 import SideBar from '@/components/view/SideBar';
 import { CastedUser } from './dashboard/page';
-import { headers } from 'next/headers';
-import { redirect } from 'next/navigation';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -29,11 +27,6 @@ export default async function RootLayout({
 		imageUrl: user?.imageUrl!,
 	};
 
-	const headersList = headers();
-
-	const pathname = headersList.get('x-invoke-path') || '';
-
-	if (!castedUser && pathname !== '/sign-in') redirect(`/sign-in`);
 	return (
 		<ClerkProvider>
 			<html lang="en">

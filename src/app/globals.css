@@ -134,7 +134,7 @@
 	}
 
 	.message {
-		@apply relative max-w-[75%] lg:max-w-[50%]  md:px-4 md:py-[18px] px-2 py-4 rounded;
+		@apply relative max-w-[75%] lg:max-w-[50%]  md:px-4 md:py-3 px-2 py-1 rounded;
 	}
 
 	.message.current-user {
@@ -207,7 +207,7 @@
 }
 
 .cl-card button {
-	@apply bg-zinc-100 dark:bg-slate-800 hover:bg-zinc-100/50 hover:dark:bg-slate-800/50;
+	@apply bg-transparent hover:bg-zinc-100/50 hover:dark:bg-slate-800/50;
 }
 
 .cl-card input {

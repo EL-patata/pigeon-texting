@@ -72,49 +72,16 @@ const SideBar: FC<Props> = ({ currentUser }) => {
 				>
 					<X />
 				</Button>
-				<Link href={'/dashboard'} className="grid place-items-center">
+				<a href={'/dashboard'} className="grid place-items-center">
 					<span className="w-[4.5rem] aspect-square grid place-items-center rounded-full bg-accent">
 						<span className="block relative w-14 bg-gradient-to-tr from-indigo-600 via-fuchsia-400-500 to-purple-700 aspect-square rounded-full">
 							<Image src={`/logo.svg`} fill alt="logo" />
 						</span>
 					</span>
 					<p className="font-mono font-bold text-lg">Pigeon-texting</p>
-				</Link>
+				</a>
 
 				<div className="w-full grid gap-1">
-					<Link
-						onClick={() => setIsOpen(false)}
-						href={`/add`}
-						className="flex items-center gap-2 rounded-lg p-4 w-full transition-colors"
-					>
-						<UserPlus />
-						<p>Add friends</p>
-					</Link>
-
-					<Link
-						onClick={() => setIsOpen(false)}
-						href={`/chats`}
-						className="flex items-center gap-2 rounded-lg p-4 w-full transition-colors"
-					>
-						<MessagesSquareIcon />
-						<p>Chats</p>
-					</Link>
-
-					<Link
-						onClick={() => setIsOpen(false)}
-						href={`/requests`}
-						className="flex items-center gap-2 rounded-lg p-4 w-full transition-colors"
-					>
-						<UserCheck />
-						<p>Friend Requests</p>
-						{requestsNumber !== 0 && (
-							<p className="ml-auto bg-accent text-primary dark:text-white w-[1.5rem] h-[1.5rem] rounded-full grid place-items-center">
-								{requestsNumber}
-							</p>
-						)}
-					</Link>
-				</div>
-				{/* <div className="w-full grid gap-1">
 					<NavLink
 						onClick={() => setIsOpen(false)}
 						href={`/add`}
@@ -152,7 +119,7 @@ const SideBar: FC<Props> = ({ currentUser }) => {
 							</p>
 						)}
 					</NavLink>
-				</div> */}
+				</div>
 
 				<ThemeChanger />
 
